@@ -1,0 +1,1 @@
+https://pixabay.com/photos/soil-cracks-clay-earth-dry-desert-5342049/
