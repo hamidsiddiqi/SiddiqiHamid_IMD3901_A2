@@ -9,11 +9,20 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     public Transform cameraTransform;
 
+    [Header("Audio Settings")]
+    public AudioSource shootSound; 
+
     float xRotation = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        if (shootSound != null)
+        {
+            shootSound.playOnAwake = false;
+        }
+
         //Debug.Log("Scene has started!");
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -46,6 +55,14 @@ public class PlayerController : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
 
+        
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            if (shootSound != null)
+            {
+                shootSound.Play();
+            }
+        }
 
     }
 }
