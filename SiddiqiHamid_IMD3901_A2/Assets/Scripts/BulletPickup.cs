@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BulletPickup : MonoBehaviour
 {
-    public int ammoAmount = 1;
+    public int bulletAmount = 1;
     public AudioClip pickupSound; // Drag your .mp3 here directly
 
     private void OnTriggerEnter(Collider other)
