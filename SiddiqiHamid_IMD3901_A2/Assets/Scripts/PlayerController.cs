@@ -73,52 +73,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //void Shoot()
-    //{
-    //    if (shootSound != null) shootSound.Play();
-    //    bulletCount--;
-    //    UpdateUI();
-
-    //    // --- Raycast Logic for Hitting UFO ---
-    //    // Creates a ray from the center of the screen
-    //    Ray ray = cameraTransform.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-    //    RaycastHit hit;
-
-    //    if (Physics.Raycast(ray, out hit, range))
-    //    {
-    //        // Check if we hit a UFO
-    //        if (hit.collider.CompareTag("UFO"))
-    //        {
-    //            // Play explosion feedback
-    //            if (explosionSound != null) explosionSound.Play();
-
-    //            // Requirement: Destroy/Hide object during runtime
-    //            hit.collider.gameObject.SetActive(false);
-    //        }
-    //    }
-    //}
-
-    //void Shoot()
-    //{
-    //    // 1. Immediate Shooting Feedback
-    //    if (shootSound != null) shootSound.Play();
-    //    bulletCount--;
-    //    UpdateUI();
-
-    //    // 2. Check for Hit
-    //    Ray ray = cameraTransform.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-    //    RaycastHit hit;
-
-    //    if (Physics.Raycast(ray, out hit, range))
-    //    {
-    //        if (hit.collider.CompareTag("UFO"))
-    //        {
-    //            // Start the delay before the explosion happens
-    //            StartCoroutine(DelayedExplosion(hit.collider.gameObject));
-    //        }
-    //    }
-    //}
-
     void Shoot()
     {
         // 1. Immediate Shooting Feedback
@@ -132,7 +86,7 @@ public class PlayerController : MonoBehaviour
             for (int i = 0; i < 2; i++) // This loop runs twice to spawn 2 bullets
             {
                 // Calculate a position between 10 and 20 units away
-                float spawnDist = Random.Range(10f, 20f);
+                float spawnDist = Random.Range(20f, 40f);
                 Vector2 randomDir = Random.insideUnitCircle.normalized * spawnDist;
 
                 Vector3 spawnPosition = new Vector3(
