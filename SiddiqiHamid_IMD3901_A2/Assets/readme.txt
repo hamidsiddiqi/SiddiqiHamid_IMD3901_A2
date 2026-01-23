@@ -13,4 +13,6 @@ Gun Empty - https://pixabay.com/sound-effects/film-special-effects-empty-gun-sho
 
 Explosion - https://pixabay.com/sound-effects/film-special-effects-nuclear-explosion-386181/
 
+Walking - https://pixabay.com/sound-effects/household-pasos-steps-40285/
+
 https://www.freepik.com/free-vector/targets-multiple-colours-set_207466835.htm#fromView=keyword&page=1&position=20&uuid=8b946d2f-2f73-46f8-8c9b-99e8a02f3a70&query=Crosshair

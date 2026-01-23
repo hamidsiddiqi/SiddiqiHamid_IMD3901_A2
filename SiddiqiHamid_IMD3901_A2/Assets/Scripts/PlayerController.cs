@@ -98,6 +98,27 @@ public class PlayerController : MonoBehaviour
     //    }
     //}
 
+    //void Shoot()
+    //{
+    //    // 1. Immediate Shooting Feedback
+    //    if (shootSound != null) shootSound.Play();
+    //    bulletCount--;
+    //    UpdateUI();
+
+    //    // 2. Check for Hit
+    //    Ray ray = cameraTransform.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+    //    RaycastHit hit;
+
+    //    if (Physics.Raycast(ray, out hit, range))
+    //    {
+    //        if (hit.collider.CompareTag("UFO"))
+    //        {
+    //            // Start the delay before the explosion happens
+    //            StartCoroutine(DelayedExplosion(hit.collider.gameObject));
+    //        }
+    //    }
+    //}
+
     void Shoot()
     {
         // 1. Immediate Shooting Feedback
@@ -105,7 +126,26 @@ public class PlayerController : MonoBehaviour
         bulletCount--;
         UpdateUI();
 
-        // 2. Check for Hit
+        // --- SPAWN TWO REPLACEMENT BULLETS FURTHER AWAY ---
+        if (bulletPrefab != null)
+        {
+            for (int i = 0; i < 2; i++) // This loop runs twice to spawn 2 bullets
+            {
+                // Calculate a position between 10 and 20 units away
+                float spawnDist = Random.Range(10f, 20f);
+                Vector2 randomDir = Random.insideUnitCircle.normalized * spawnDist;
+
+                Vector3 spawnPosition = new Vector3(
+                    transform.position.x + randomDir.x,
+                    0.5f, // Keeps bullets at floor level
+                    transform.position.z + randomDir.y
+                );
+
+                Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+            }
+        }
+
+        // 2. Raycast Logic for Hitting UFO (Remains the same)
         Ray ray = cameraTransform.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
@@ -113,7 +153,6 @@ public class PlayerController : MonoBehaviour
         {
             if (hit.collider.CompareTag("UFO"))
             {
-                // Start the delay before the explosion happens
                 StartCoroutine(DelayedExplosion(hit.collider.gameObject));
             }
         }
