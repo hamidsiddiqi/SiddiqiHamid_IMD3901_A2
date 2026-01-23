@@ -19,18 +19,31 @@ public class PlayerController : MonoBehaviour
     [Header("Bullet Count Settings")]
     public int bulletCount = 0;
     public TextMeshProUGUI bulletCounterText;
+    public TextMeshProUGUI ufoCounterText;
     public GameObject bulletPrefab;
-    public float range = 100f; // How far you can shoot
+    public float range = 100f;
 
     public float explosionDelay = 0.2f;
+
+    private int ufosRemaining;
 
     float xRotation = 0f;
 
     void Start()
     {
-        if (shootSound != null) shootSound.playOnAwake = false;
-        if (emptySound != null) emptySound.playOnAwake = false;
-        if (explosionSound != null) explosionSound.playOnAwake = false;
+        ufosRemaining = GameObject.FindGameObjectsWithTag("UFO").Length;
+
+        if (shootSound != null) { 
+            shootSound.playOnAwake = false;
+        }
+
+        if (emptySound != null) { 
+            emptySound.playOnAwake = false; 
+        }
+
+        if (explosionSound != null) { 
+            explosionSound.playOnAwake = false; 
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -115,14 +128,17 @@ public class PlayerController : MonoBehaviour
     // This handles the timing gap between the shot and the impact
     IEnumerator DelayedExplosion(GameObject target)
     {
-        // Wait for the specified time (simulating bullet travel)
+        
         yield return new WaitForSeconds(explosionDelay);
 
-        // 3. Delayed Explosion Feedback
+ 
         if (explosionSound != null) explosionSound.Play();
 
-        // Requirement: Hide/Destroy object during runtime
+    
         target.SetActive(false);
+        ufosRemaining--;
+
+        UpdateUI();
     }
 
     public void AddBullet()
@@ -136,6 +152,11 @@ public class PlayerController : MonoBehaviour
         if (bulletCounterText != null)
         {
             bulletCounterText.text = "Bullet Count: " + bulletCount;
+        }
+
+        if (ufoCounterText != null)
+        {
+            ufoCounterText.text = "UFOs Remaining: " + ufosRemaining;
         }
     }
 }
