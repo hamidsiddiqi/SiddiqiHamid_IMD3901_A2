@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+
         // 2. Raycast Logic for Hitting UFO (Remains the same)
         Ray ray = cameraTransform.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
