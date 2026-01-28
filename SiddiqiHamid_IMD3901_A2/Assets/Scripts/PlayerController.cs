@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource shootSound;
     public AudioSource emptySound;
     public AudioSource explosionSound;
+    public AudioSource music;
 
     [Header("Bullet Count Settings")]
     public int bulletCount = 0;
@@ -43,6 +44,13 @@ public class PlayerController : MonoBehaviour
 
         if (explosionSound != null) { 
             explosionSound.playOnAwake = false; 
+        }
+
+        if (music != null)
+        {
+            music.loop = true;
+            music.playOnAwake = true;
+            music.Play();
         }
 
         Cursor.lockState = CursorLockMode.Locked;
