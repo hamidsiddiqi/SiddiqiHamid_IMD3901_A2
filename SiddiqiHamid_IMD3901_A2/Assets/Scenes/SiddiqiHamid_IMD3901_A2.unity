@@ -269,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8135023674665499069, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8518324294302271954, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1455,8 +1455,8 @@ Transform:
   m_GameObject: {fileID: 833588566}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 120.57, y: 0, z: 136.86}
-  m_LocalScale: {x: 82.12102, y: 82.12102, z: 82.12102}
+  m_LocalPosition: {x: 37.8226, y: -0, z: 83.4229}
+  m_LocalScale: {x: 49.89165, y: 66.442474, z: 38.7247}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -2291,7 +2291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1318569608
 Transform:
   m_ObjectHideFlags: 0
@@ -2906,7 +2906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7395006672952822411, guid: 2998aa3f4512340fdb5648bbeddc679c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 194.71808
+      value: 92.1
       objectReference: {fileID: 0}
     - target: {fileID: 7395006672952822411, guid: 2998aa3f4512340fdb5648bbeddc679c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3795,20 +3795,19 @@ GameObject:
   - component: {fileID: 1753345392}
   - component: {fileID: 1753345391}
   - component: {fileID: 1753345390}
+  - component: {fileID: 1753345399}
   - component: {fileID: 1753345393}
-  - component: {fileID: 1753345396}
   - component: {fileID: 1753345395}
   - component: {fileID: 1753345394}
   - component: {fileID: 1753345398}
   - component: {fileID: 1753345397}
-  - component: {fileID: 1753345399}
   m_Layer: 0
   m_Name: VR Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1753345390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4076,32 +4075,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1753345396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753345389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e21dd23557c207d4aa6088576637b13b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  mouseSensitivity: 0
-  controller: {fileID: 1753345393}
-  cameraTransform: {fileID: 1506552762}
-  shootSound: {fileID: 1753345395}
-  emptySound: {fileID: 1753345394}
-  explosionSound: {fileID: 1753345398}
-  music: {fileID: 1753345397}
-  bulletCount: 0
-  bulletCounterText: {fileID: 142407276}
-  ufoCounterText: {fileID: 2065877722}
-  bulletPrefab: {fileID: 2989000923634411228, guid: 44cdcd55c8562cc46b31e272eb09fc5b, type: 3}
-  range: 500
-  explosionDelay: 0.5
 --- !u!82 &1753345397
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4308,19 +4281,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd03d36a5368a814d9637583c1e4557a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSound: {fileID: 0}
-  emptySound: {fileID: 0}
-  explosionSound: {fileID: 0}
-  music: {fileID: 0}
+  shootSound: {fileID: 1753345395}
+  emptySound: {fileID: 1753345394}
+  explosionSound: {fileID: 1753345398}
+  music: {fileID: 1753345397}
   bulletCount: 0
-  bulletCounterText: {fileID: 0}
-  ufoCounterText: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  bulletCounterText: {fileID: 142407276}
+  ufoCounterText: {fileID: 2065877722}
+  bulletPrefab: {fileID: 2989000923634411228, guid: 44cdcd55c8562cc46b31e272eb09fc5b, type: 3}
   range: 100
-  floatingBullet: {fileID: 0}
+  floatingBullet: {fileID: 2989000923634411228, guid: 44cdcd55c8562cc46b31e272eb09fc5b, type: 3}
   followOffset: {x: 0.5, y: -0.4, z: 1}
-  cameraTransform: {fileID: 0}
-  explosionDelay: 0.2
+  cameraTransform: {fileID: 1506552762}
+  explosionDelay: 0.5
 --- !u!1001 &1798164473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4401,7 +4374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1848162784
 MonoBehaviour:
   m_ObjectHideFlags: 0

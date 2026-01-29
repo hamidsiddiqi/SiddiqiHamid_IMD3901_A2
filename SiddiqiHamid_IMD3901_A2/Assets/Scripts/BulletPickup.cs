@@ -3,27 +3,34 @@ using UnityEngine;
 public class BulletPickup : MonoBehaviour
 {
     public int bulletAmount = 1;
-    public AudioClip pickupSound; // Drag your .mp3 here directly
+    public AudioClip pickupSound;
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the collider belongs to the Player
         if (other.CompareTag("Player"))
         {
-            // Connect to your PlayerController script
-            PlayerController player = other.GetComponent<PlayerController>();
-
-            if (player != null)
+            // Try to find the Desktop script
+            PlayerController desktopPlayer = other.GetComponent<PlayerController>();
+            if (desktopPlayer != null)
             {
-                player.AddBullet(); // Calls the function in your PlayerController
+                desktopPlayer.AddBullet();
+                FinalizePickup();
+                return;
+            }
 
-                // Plays sound at the bullet's location
-                if (pickupSound != null) AudioSource.PlayClipAtPoint(pickupSound, transform.position);
-
-                // Requirement: Destroy objects during runtime
-                Destroy(gameObject);
+            // Try to find the VR script
+            HMDController vrPlayer = other.GetComponent<HMDController>();
+            if (vrPlayer != null)
+            {
+                vrPlayer.CollectBulletVR();
+                FinalizePickup();
             }
         }
     }
-}
 
+    void FinalizePickup()
+    {
+        if (pickupSound != null) AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+        Destroy(gameObject);
+    }
+}
