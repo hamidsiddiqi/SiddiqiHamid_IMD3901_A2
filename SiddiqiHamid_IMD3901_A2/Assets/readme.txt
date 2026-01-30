@@ -32,6 +32,8 @@ https://github.com/hamidsiddiqi/SiddiqiHamid_IMD3901_A2
 
 Assets Used:
 
+Sky: https://assetstore.unity.com/packages/2d/textures-materials/sky/10-skyboxes-pack-day-night-32236
+
 Prefabs:
 Bullet Prefab - https://assetstore.unity.com/packages/3d/props/weapons/weapons-pack-bullets-302702
 UFO Prefab - https://assetstore.unity.com/packages/3d/vehicles/space/ufo-battleship-289193
