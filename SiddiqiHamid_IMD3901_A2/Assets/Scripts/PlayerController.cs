@@ -24,6 +24,11 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public float range = 100f;
 
+    [Header("You Win")]
+    public GameObject winGraphic;
+    public AudioSource winSound;
+    private bool hasWon = false;
+
     public float explosionDelay = 0.2f;
 
     private int ufosRemaining;
@@ -51,6 +56,11 @@ public class PlayerController : MonoBehaviour
             music.loop = true;
             music.playOnAwake = true;
             music.Play();
+        }
+
+        if (winGraphic != null)
+        {
+            winGraphic.SetActive(false);
         }
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -167,5 +177,16 @@ public class PlayerController : MonoBehaviour
         {
             ufoCounterText.text = "UFOs Remaining: " + ufosRemaining;
         }
+
+        if (ufosRemaining <= 0 && !hasWon && Time.timeSinceLevelLoad > 0.1f)
+        {
+            hasWon = true;
+            if (winGraphic != null) winGraphic.SetActive(true);
+            if (winSound != null) winSound.Play();
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    
     }
 }
