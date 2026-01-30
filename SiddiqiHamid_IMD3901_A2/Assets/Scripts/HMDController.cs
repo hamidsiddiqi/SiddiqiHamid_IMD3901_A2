@@ -23,6 +23,11 @@ public class HMDController : MonoBehaviour
     public Vector3 followOffset = new Vector3(0.5f, -0.4f, 1f);
     public Transform cameraTransform;
 
+    [Header("You Win")]
+    public GameObject winGraphic;
+    public AudioSource winSound;
+    private bool hasWon = false;
+
     public float explosionDelay = 0.5f; // Matching your Inspector value
     private int ufosRemaining;
 
@@ -32,6 +37,11 @@ public class HMDController : MonoBehaviour
         ufosRemaining = GameObject.FindGameObjectsWithTag("UFO").Length;
 
         if (music != null) { music.loop = true; music.Play(); }
+
+        if (winGraphic != null)
+        {
+            winGraphic.SetActive(false);
+        }
 
         UpdateUI();
     }
@@ -77,7 +87,7 @@ public class HMDController : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
                 // Calculate a position between 10 and 20 units away
-                float spawnDist = Random.Range(20f, 40f);
+                float spawnDist = Random.Range(20f, 20f);
                 Vector2 randomDir = Random.insideUnitCircle.normalized * spawnDist;
 
                 Vector3 spawnPosition = new Vector3(
@@ -119,12 +129,42 @@ public class HMDController : MonoBehaviour
 
     void UpdateUI()
     {
-        if (bulletCounterText != null)
+        if (bulletCounterText != null) { 
+        
             bulletCounterText.text = "Bullet Count: " + bulletCount;
+        
+        }
 
-        if (ufoCounterText != null)
+        if (ufoCounterText != null) { 
+        
             ufoCounterText.text = "UFOs Remaining: " + ufosRemaining;
+        
+        }
+
+
+        if (ufosRemaining <= 0 && !hasWon && Time.timeSinceLevelLoad > 0.1f)
+        {
+            hasWon = true;
+            if (winGraphic != null) { 
+            
+            winGraphic.SetActive(true);
+            
+            }
+            if (winSound != null) { 
+            
+            winSound.Play();
+            
+            } 
+            
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+
     }
+
+
 }
 
 

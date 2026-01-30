@@ -59,9 +59,9 @@ public class SceneSwitcher : MonoBehaviour
         desktopPlayer.SetActive(true);
         hmdPlayer.SetActive(false);
 
-        if (winGraphic != null) { 
-            winGraphic.SetActive(false);
-        } 
+        //if (winGraphic != null) { 
+        //    winGraphic.SetActive(false);
+        //} 
 
         StartGame();
 

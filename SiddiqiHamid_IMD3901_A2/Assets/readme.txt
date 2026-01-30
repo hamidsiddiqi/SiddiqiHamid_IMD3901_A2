@@ -6,10 +6,10 @@
 
 
 
+---------------------------------------- ASSETS USED ---------------
 
 
-
-
+Trees: https://assetstore.unity.com/packages/tools/utilities/veridian-imposters-327110
 
 
 Bullets - https://assetstore.unity.com/packages/3d/props/weapons/weapons-pack-bullets-302702
@@ -34,3 +34,4 @@ Music - https://pixabay.com/music/ambient-dark-spectrometer-11713/
 https://www.freepik.com/free-vector/targets-multiple-colours-set_207466835.htm#fromView=keyword&page=1&position=20&uuid=8b946d2f-2f73-46f8-8c9b-99e8a02f3a70&query=Crosshair
 
 Start Menu - Designed by me
+Win - Designed by me
