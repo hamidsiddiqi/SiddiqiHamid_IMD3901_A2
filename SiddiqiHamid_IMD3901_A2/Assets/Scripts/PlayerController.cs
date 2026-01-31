@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource winSound;
     private bool hasWon = false;
 
-    public float explosionDelay = 0.2f;
+    public float explosionDelay = 0.5f;
 
     private int ufosRemaining;
 
@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // --- Movement & Look Logic ---
         Vector2 moveInput = Keyboard.current != null ? new Vector2
             (
                 (Keyboard.current.aKey.isPressed ? -1 : 0) + (Keyboard.current.dKey.isPressed ? 1 : 0),
@@ -90,7 +89,6 @@ public class PlayerController : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
 
-        // --- Shooting Interaction ---
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             if (bulletCount > 0)
@@ -106,23 +104,20 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        // 1. Immediate Shooting Feedback
         if (shootSound != null) shootSound.Play();
         bulletCount--;
         UpdateUI();
 
-        // --- SPAWN TWO REPLACEMENT BULLETS FURTHER AWAY ---
         if (bulletPrefab != null)
         {
-            for (int i = 0; i < 2; i++) // This loop runs twice to spawn 2 bullets
+            for (int i = 0; i < 2; i++)
             {
-                // Calculate a position between 10 and 20 units away
                 float spawnDist = Random.Range(20f, 40f);
                 Vector2 randomDir = Random.insideUnitCircle.normalized * spawnDist;
 
                 Vector3 spawnPosition = new Vector3(
                     transform.position.x + randomDir.x,
-                    0.5f, // Keeps bullets at floor level
+                    0.5f, 
                     transform.position.z + randomDir.y
                 );
 
@@ -130,7 +125,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // 2. Raycast Logic for Hitting UFO (Remains the same)
         Ray ray = cameraTransform.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
@@ -143,7 +137,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // This handles the timing gap between the shot and the impact
     IEnumerator DelayedExplosion(GameObject target)
     {
         
@@ -177,15 +170,25 @@ public class PlayerController : MonoBehaviour
             ufoCounterText.text = "UFOs Remaining: " + ufosRemaining;
         }
 
-        if (ufosRemaining <= 0 && !hasWon && Time.timeSinceLevelLoad > 0.1f)
+        if (ufosRemaining <= 0 && !hasWon && Time.timeSinceLevelLoad > 0.5f)
         {
             hasWon = true;
-            if (winGraphic != null) winGraphic.SetActive(true);
-            if (winSound != null) winSound.Play();
+            if (winGraphic != null)
+            {
+
+                winGraphic.SetActive(true);
+
+            }
+            if (winSound != null)
+            {
+
+                winSound.Play();
+
+            }
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-    
+
     }
 }

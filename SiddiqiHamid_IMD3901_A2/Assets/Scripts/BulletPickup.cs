@@ -9,7 +9,7 @@ public class BulletPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Try to find the Desktop script
+            // For Desktop
             PlayerController desktopPlayer = other.GetComponent<PlayerController>();
             if (desktopPlayer != null)
             {
@@ -18,7 +18,7 @@ public class BulletPickup : MonoBehaviour
                 return;
             }
 
-            // Try to find the VR script
+            // For HMD
             HMDController vrPlayer = other.GetComponent<HMDController>();
             if (vrPlayer != null)
             {
